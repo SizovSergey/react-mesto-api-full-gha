@@ -1,0 +1,18 @@
+.element__button-remove {
+    min-width: 18px;
+    min-height: 19px;
+    background-image: url('../../../images/Trash.svg');
+    background-position: center;
+    border: none;
+    background-repeat: no-repeat;
+    transition: opacity .2s linear;
+    cursor: pointer;
+    position: absolute;
+    background-color: transparent;
+    top: 20px;
+    right: 20px;
+  }
+  
+  .element__button-remove:hover {
+    opacity: 0.6;
+  }

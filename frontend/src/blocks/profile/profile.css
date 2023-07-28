@@ -1,0 +1,31 @@
+.profile {
+  max-width: 880px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(min-content, max-content) minmax(min-content, max-content) 1fr;
+  grid-gap: 0 30px;
+  padding-top: 36px;
+}
+
+@media screen and (max-width:1024px) {
+  .profile {
+    width: calc(100% - 100px);
+  }
+}
+
+@media screen and (max-width:768px) {
+  .profile {
+    width: calc(100% - 80px);
+  }
+}
+
+@media screen and (max-width:660px) {
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(100% - 38px);
+    max-width: 282px;
+    padding-top: 38.25px;
+  }
+}

@@ -1,0 +1,28 @@
+.popup__cancel-button {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  min-width: 32px;
+  min-height: 32px;
+  background-color: transparent;
+  background-image: url('../../../images/Close_icon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transition: opacity .2s ease;
+  border: 0;
+  cursor: pointer;
+}
+
+.popup__cancel-button:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 768px) {
+  .popup__cancel-button {
+    min-width: 20px;
+    min-height: 20px;
+    right: 0px;
+    top: -38px;
+  }
+}

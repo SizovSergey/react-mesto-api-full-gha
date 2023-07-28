@@ -1,0 +1,29 @@
+.authTemplate__button{
+    margin-top: 216px;
+    width: 100%;
+    height: 50px;
+    cursor: pointer;
+    border: 0;
+    border-radius: 2px;
+    background-color: #fff;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 1.22;
+    text-align: center;
+    color: #000;
+    transition: opacity .2s ease;
+  }
+  
+  .authTemplate__button:hover {
+    opacity: 0.8;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .authTemplate__button {
+      height: 46px;
+      font-size: 14px;
+      line-height: 1.21;
+      margin-top: 31px;
+    }
+  }

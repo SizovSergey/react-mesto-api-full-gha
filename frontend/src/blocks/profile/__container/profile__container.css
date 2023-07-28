@@ -1,0 +1,23 @@
+.profile__container {
+  display: grid;
+  align-content: center;
+  grid-template-areas:
+    "name edit"
+    "info info";
+  grid-row-gap: 16px;
+  grid-column-gap: 18px;
+}
+
+@media screen and (max-width:660px) {
+  .profile__container {
+    padding-bottom: 33px;
+    padding-top: 26px;
+    grid-column-gap: 10px;
+    grid-row-gap: 7px;
+    padding-left: 46px;
+    padding-right: 19px;
+    grid-template-areas:
+      "name edit"
+      "info .";
+  }
+}

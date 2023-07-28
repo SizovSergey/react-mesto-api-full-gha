@@ -1,0 +1,35 @@
+.profile__user-name {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 114%;
+  color: #FFFFFF;
+  margin: 0;
+  grid-area: name;
+
+}
+
+@media screen and (max-width:768px) {
+  .profile__user-name {
+    font-size: 27px;
+    text-align: left;
+  }
+}
+
+@media screen and (max-width:767px) {
+  .profile__user-name {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width:620px) {
+  .profile__user-name {
+    font-size: 27px;
+    line-height: 1.22;
+    text-align: center;
+  }
+}

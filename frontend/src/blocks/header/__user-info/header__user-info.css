@@ -1,0 +1,8 @@
+.header__user-info {
+display: flex;
+flex-direction: row;
+color: #FFFFFF;
+gap: 24px;
+align-items: center;
+padding-bottom: 46px;
+}

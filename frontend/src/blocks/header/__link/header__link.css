@@ -1,0 +1,9 @@
+.header__link {
+    color: #fff;
+    text-decoration: none;
+    transition: opacity 0.7s linear;
+}
+
+.authTemplate__button:hover {
+    opacity: 0.5;
+  }

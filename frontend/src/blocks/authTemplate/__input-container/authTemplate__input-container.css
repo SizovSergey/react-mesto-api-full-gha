@@ -1,0 +1,10 @@
+.authTemplate__input-container {
+    max-width: 358px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.authTemplate__input-container:last-of-type {
+    margin-bottom: 0;
+}
+
