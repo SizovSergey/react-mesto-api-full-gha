@@ -82,7 +82,7 @@ class Api {
 
 
  export const api = new Api({
-  baseUrl: 'http://localhost:3000',
+  baseUrl: 'http://158.160.78.208:3000',
   headers: {
     'Accept': 'application/json',
     'Authorization': `Bearer ${jwt}`,

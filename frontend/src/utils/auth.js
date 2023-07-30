@@ -3,7 +3,7 @@ const checkResponse = (res) => {
 }
 
 const request = (endpoint, options) => {
-  const url = `http://localhost:3000${endpoint}`;
+  const url = `http://158.160.78.208:3000${endpoint}`;
   return fetch(url, options).then(checkResponse);
 }
 
