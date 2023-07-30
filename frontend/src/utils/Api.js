@@ -83,7 +83,7 @@ class Api {
 
 
  export const api = new Api({
-  baseUrl: 'https://sgend.nomoreparties.co',
+  baseUrl: 'http://sgend.nomoreparties.co',
   headers: {
     'Accept': 'application/json',
     'Authorization': `Bearer ${jwt}`,
