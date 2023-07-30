@@ -1,9 +1,10 @@
 const checkResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
 }
+const BASEURL = `http://sgend.nomoreparties.co`
 
 const request = (endpoint, options) => {
-  const url = `http://sgend.nomoreparties.co${endpoint}`;
+  const url = `${BASEURL}${endpoint}`;
   return fetch(url, options).then(checkResponse);
 }
 
@@ -13,6 +14,8 @@ export const register = (email, password) => {
     credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
+      'Accept': 'application/json',
+
     },
     body: JSON.stringify({ email, password}),
   })
@@ -24,6 +27,7 @@ export const authorize = (email, password) => {
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
       },
       body: JSON.stringify({ email, password }),
     })
