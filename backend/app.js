@@ -1,7 +1,5 @@
 const express = require('express');
 
-const cors = require('cors');
-
 const helmet = require('helmet');
 
 const rateLimit = require('express-rate-limit');
@@ -15,6 +13,8 @@ const { errors } = require('celebrate');
 const routes = require('./routes/index');
 
 const errorsHandler = require('./middlewares/errorsHandler');
+
+const allowedCors = require('./middlewares/cors');
 
 const { PORT = 3000 } = process.env;
 
@@ -30,11 +30,25 @@ const apiLimiter = rateLimit({
   legacyHeaders: false,
 });
 
-app.use(cors());
-
 app.use(express.json());
 
 app.use(helmet());
+
+app.use((req, res, next) => {
+  const { origin } = req.headers;
+  const requestHeaders = req.headers['access-control-request-headers'];
+  const { method } = req;
+  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+  if (method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
+    res.header('Access-Control-Allow-Headers', requestHeaders);
+    return res.end();
+  }
+  next();
+});
 
 app.use('/api', apiLimiter);
 
