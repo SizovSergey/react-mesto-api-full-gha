@@ -15,20 +15,28 @@ class Api {
   getUserinfo() {
     return this._customFetch(`${this._options.baseUrl}/users/me`, {
       credentials: 'include',
-      headers: this._options.headers
+      headers: {
+        'Authorization': `Bearer ${jwt}`,
+        'Content-Type': 'application/json'
+      }
     });
   }
 
   getInitialCards() {
     return this._customFetch(`${this._options.baseUrl}/cards`, {
-      headers: this._options.headers
+      headers: {
+        'Authorization': `Bearer ${jwt}`,
+      }
     });
   }
 
   editProfile(name,job) {
     return this._customFetch(`${this._options.baseUrl}/users/me `, {
       method: 'PATCH',
-      headers: this._options.headers,
+      headers: {
+        'Authorization': `Bearer ${jwt}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         name: name,
         about: job
@@ -39,7 +47,10 @@ class Api {
   insertNewCard(name,link) {
     return this._customFetch(`${this._options.baseUrl}/cards`, {
       method: 'POST',
-      headers: this._options.headers,
+      headers: {
+        'Authorization': `Bearer ${jwt}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         name,
         link
@@ -51,7 +62,9 @@ class Api {
     
     return this._customFetch(`${this._options.baseUrl}/cards/${id}`, {
       method: 'DELETE',
-      headers: this._options.headers
+      headers: {
+        'Authorization': `Bearer ${jwt}`,
+      }
     })
 
   }
@@ -60,12 +73,16 @@ class Api {
     if (!isLiked) {
       return this._customFetch(`${this._options.baseUrl}/cards/${id}/likes`, {
         method: 'DELETE',
-        headers: this._options.headers
+        headers: {
+          'Authorization': `Bearer ${jwt}`,
+        }
       })
     } else {
       return this._customFetch(`${this._options.baseUrl}/cards/${id}/likes`, {
       method: 'PUT',
-      headers: this._options.headers
+      headers: {
+        'Authorization': `Bearer ${jwt}`,
+      }
     })
     }
   }
@@ -73,7 +90,10 @@ class Api {
   editAvatar(link) {
     return this._customFetch(`${this._options.baseUrl}/users/me/avatar`, {
       method: 'PATCH',
-      headers: this._options.headers,
+      headers: {
+        'Authorization': `Bearer ${jwt}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
        avatar: link
       })
@@ -84,11 +104,6 @@ class Api {
 
  export const api = new Api({
   baseUrl: 'https://sgend.nomoreparties.co',
-  headers: {
-    'Accept': 'application/json',
-    'Authorization': `Bearer ${jwt}`,
-    'Content-Type': 'application/json'
-  }
 });
 
 
