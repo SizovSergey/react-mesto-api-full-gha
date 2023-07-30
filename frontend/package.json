@@ -16,7 +16,7 @@
     "yup": "^1.2.0"
   },
   "scripts": {
-   "start": "set PORT=3001 && react-scripts start",
+   "start": "react-scripts start",
     "predeploy": "npm run s",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
