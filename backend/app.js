@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 
 const helmet = require('helmet');
@@ -14,7 +16,7 @@ const routes = require('./routes/index');
 
 const errorsHandler = require('./middlewares/errorsHandler');
 
-const allowedCors = require('./middlewares/cors');
+const cors = require('./middlewares/cors');
 
 const { PORT = 3000 } = process.env;
 
@@ -32,24 +34,9 @@ const apiLimiter = rateLimit({
 
 app.use(express.json());
 
-app.use(helmet());
+app.use(cors);
 
-app.use((req, res, next) => {
-  const { origin } = req.headers;
-  const requestHeaders = req.headers['access-control-request-headers'];
-  const { method } = req;
-  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
-  res.header('Access-Control-Allow-Credentials', true);
-  if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
-  if (method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
-    res.header('Access-Control-Allow-Headers', requestHeaders);
-    return res.end();
-  }
-  next();
-});
+app.use(helmet());
 
 app.use('/api', apiLimiter);
 

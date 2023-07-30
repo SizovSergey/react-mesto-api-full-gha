@@ -1,7 +1,8 @@
-// пришлось убрать env из gitignore,потому что тесты так не проходились
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
+
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 const BadRequestError = require('../errors/badRequestError');
 const NotFoundError = require('../errors/notFoundError');
@@ -114,7 +115,7 @@ module.exports.login = (req, res, next) => {
       if (!email || !password) {
         next(new UnauthorizedError('Неверный email или пароль.'));
       }
-      const token = jwt.sign({ _id: user._id }, 'supersecretkeysizovsergey', { expiresIn: '7d' });
+      const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'supersecretkey', { expiresIn: '7d' });
       res
         .cookie('token', token, {
           httpOnly: true,
