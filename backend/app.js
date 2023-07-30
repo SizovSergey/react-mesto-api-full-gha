@@ -12,11 +12,11 @@ const mongoose = require('mongoose');
 
 const { errors } = require('celebrate');
 
+const cors = require('./middlewares/cors');
+
 const routes = require('./routes/index');
 
 const errorsHandler = require('./middlewares/errorsHandler');
-
-const cors = require('./middlewares/cors');
 
 const { PORT = 3000 } = process.env;
 
