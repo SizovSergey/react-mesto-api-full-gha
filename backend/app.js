@@ -10,16 +10,11 @@ const app = express();
 
 const mongoose = require('mongoose');
 
-const allowedCors = [
-  'http://sgfront.nomoreparties.co',
-  'https://sgfront.nomoreparties.co',
-  'http://localhost:3000',
-  'https://localhost:3000',
-];
-
 const { errors } = require('celebrate');
 
 const routes = require('./routes/index');
+
+const cors = require('./middlewares/cors');
 
 const errorsHandler = require('./middlewares/errorsHandler');
 
@@ -39,22 +34,7 @@ const apiLimiter = rateLimit({
 
 app.use(express.json());
 
-app.use((req, res, next) => {
-  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
-  const { origin } = req.headers;
-  const requestHeaders = req.headers['access-control-request-headers'];
-  const { method } = req;
-  res.header('Access-Control-Allow-Credentials', true);
-  if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
-  if (method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
-    res.header('Access-Control-Allow-Headers', requestHeaders);
-    res.end();
-  }
-  next();
-});
+app.use(cors);
 
 app.use(helmet());
 
