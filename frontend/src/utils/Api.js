@@ -14,6 +14,7 @@ class Api {
 
   getUserinfo() {
     return this._customFetch(`${this._options.baseUrl}/users/me`, {
+      credentials: 'include',
       headers: this._options.headers
     });
   }
