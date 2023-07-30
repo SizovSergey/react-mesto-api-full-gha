@@ -10,6 +10,13 @@ const app = express();
 
 const mongoose = require('mongoose');
 
+const allowedCors = [
+  'http://sgfront.nomoreparties.co',
+  'https://sgfront.nomoreparties.co',
+  'http://localhost:3000',
+  'https://localhost:3000',
+];
+
 const { errors } = require('celebrate');
 
 const routes = require('./routes/index');
@@ -33,12 +40,6 @@ const apiLimiter = rateLimit({
 app.use(express.json());
 
 app.use((req, res, next) => {
-  const allowedCors = [
-    'http://sgfront.nomoreparties.co',
-    'https://sgfront.nomoreparties.co',
-    'http://localhost:3000',
-    'https://localhost:3000',
-  ];
   const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
   const { origin } = req.headers;
   const requestHeaders = req.headers['access-control-request-headers'];
