@@ -118,6 +118,8 @@ module.exports.login = (req, res, next) => {
       res
         .cookie('token', token, {
           httpOnly: true,
+          sameSite: 'none',
+          secure: true,
           maxAge: 3600000 * 24 * 7,
         })
         .status(200)
