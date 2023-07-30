@@ -1,7 +1,7 @@
 const checkResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
 }
-const BASEURL = `http://sgend.nomoreparties.co`
+const BASEURL = `https://sgend.nomoreparties.co`
 
 const request = (endpoint, options) => {
   const url = `${BASEURL}${endpoint}`;
