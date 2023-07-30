@@ -3,7 +3,7 @@ const checkResponse = (res) => {
 }
 
 const request = (endpoint, options) => {
-  const url = `http://sgend.nomoreparties.co:3000${endpoint}`;
+  const url = `http://sgend.nomoreparties.co${endpoint}`;
   return fetch(url, options).then(checkResponse);
 }
 
