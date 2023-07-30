@@ -13,6 +13,12 @@ const registerRouter = require('./signUp');
 
 router.use(requestLogger);
 
+router.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 router.use('/signin', loginRouter);
 router.use('/signup', registerRouter);
 router.use('/cards', cardsRouter);
