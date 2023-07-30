@@ -1,6 +1,4 @@
 
-const jwt = localStorage.getItem('token');
-
 class Api {
   constructor(options) {
     this._options = options;
@@ -16,7 +14,7 @@ class Api {
     return this._customFetch(`${this._options.baseUrl}/users/me`, {
       credentials: 'include',
       headers: {
-        'Authorization': `Bearer ${jwt}`,
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'
       }
     });
@@ -25,7 +23,7 @@ class Api {
   getInitialCards() {
     return this._customFetch(`${this._options.baseUrl}/cards`, {
       headers: {
-        'Authorization': `Bearer ${jwt}`,
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
       }
     });
   }
@@ -34,7 +32,7 @@ class Api {
     return this._customFetch(`${this._options.baseUrl}/users/me `, {
       method: 'PATCH',
       headers: {
-        'Authorization': `Bearer ${jwt}`,
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -48,7 +46,7 @@ class Api {
     return this._customFetch(`${this._options.baseUrl}/cards`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${jwt}`,
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -63,7 +61,7 @@ class Api {
     return this._customFetch(`${this._options.baseUrl}/cards/${id}`, {
       method: 'DELETE',
       headers: {
-        'Authorization': `Bearer ${jwt}`,
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
       }
     })
 
@@ -74,14 +72,14 @@ class Api {
       return this._customFetch(`${this._options.baseUrl}/cards/${id}/likes`, {
         method: 'DELETE',
         headers: {
-          'Authorization': `Bearer ${jwt}`,
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
         }
       })
     } else {
       return this._customFetch(`${this._options.baseUrl}/cards/${id}/likes`, {
       method: 'PUT',
       headers: {
-        'Authorization': `Bearer ${jwt}`,
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
       }
     })
     }
@@ -91,7 +89,7 @@ class Api {
     return this._customFetch(`${this._options.baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: {
-        'Authorization': `Bearer ${jwt}`,
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
