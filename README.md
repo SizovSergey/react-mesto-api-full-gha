@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 84.201.179.108
+IP-адрес 84.201.179.108 <ipv4>
 
 Frontend https://sgfront.nomoreparties.co
 
