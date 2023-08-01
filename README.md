@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP 84.201.179.108 
+IP 158.160.9.90 
 
 Frontend https://sgfront.nomoreparties.co
 
